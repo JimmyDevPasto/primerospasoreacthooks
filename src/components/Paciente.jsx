@@ -4,7 +4,16 @@ const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
 
   const {nombre, propietario, email, fecha,sintomas, id}= paciente;
 
-  const handleEliminar= ()=>{ 
+  const modi=()=>{
+    fecha.toLocaleString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric',minute: 'numeric', hour12: true })
+    console.log(fecha);
+    return  JSON.stringify(fecha)
+  }
+  
+
+  console.log(fecha.replace('T', ' hora'));   
+
+    const handleEliminar= ()=>{ 
     
     const respuesta = confirm(`Deseas eliminar a este paciente: ${nombre}`);
     if (respuesta) {
@@ -29,6 +38,14 @@ const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
         <p className='font-bold mb-3 text-gray-700 uppercase'>
           fecha: 
           <span className='font-normal normal-case'>{fecha}</span>
+        </p>
+        <p className='font-bold mb-3 text-gray-700 uppercase'>
+          fecha: 
+          <span className='font-normal normal-case'>{fecha.replace('T'," Hora: ")}</span>
+        </p>
+        <p className='font-bold mb-3 text-gray-700 uppercase'>
+          fecha: 
+          <span className='font-normal normal-case'>{modi()}</span>
         </p>
         <p className='font-bold mb-3 text-gray-700 uppercase'>
           sintomas: 
